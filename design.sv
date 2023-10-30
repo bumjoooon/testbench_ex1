@@ -56,4 +56,17 @@ module reg_ctrl
          end
       end   
 
+      always@(posedge clk) begin
+         if(!rstn)begin
+            ready_dly <= 1;
+         end
+         else begin
+            ready_dly <= ready;
+         end
+
+         assign ready_pe = ~ready & ready_dly;
+
+         endmodule
+
+
 
